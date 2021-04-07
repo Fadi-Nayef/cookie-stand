@@ -108,28 +108,30 @@ BranchesData.prototype.render = function () {
   branchesRow.appendChild(totalTd);
   // fill text content
   totalTd.textContent = this.total;
-};
-
-// footer function
-function creatingFooter() {
-  // making footer row
-  let footerRow = document.createElement('tr');
-
-  // append footer row to the table
-  tableElement.appendChild(footerRow);
-
-  // creating  first th for footer
-  let firstThr = document.createElement('th');
-
-  // append th to the footer row
-  footerRow.appendChild(firstThr);
-
-  // add to text content
-  firstThr.textContent = 'Total';
 
 
 
-  let hourlyTotal=0;
+  // footer function
+  function creatingFooter() {
+    // making footer row
+    let footerRow = document.createElement('tr');
+
+    // append footer row to the table
+    tableElement.appendChild(footerRow);
+
+    // creating  first th for footer
+    let firstThr = document.createElement('th');
+
+    // append th to the footer row
+    footerRow.appendChild(firstThr);
+
+    // add to text content
+    firstThr.textContent = 'Total';
+  }
+
+
+  let hourlyTotal = 0;
+
   let grandTotal = 0;
 
   // creating total calculation
@@ -166,6 +168,123 @@ function creatingFooter() {
   // totalTh.textContent=globalTotal;
 
 
+};
+tableHeader();
+
+//get element by id to creat branches form
+let branchesForm = document.getElementById('branchesForm');
+
+//adding the event listener
+branchesForm.addEventListener('submit', submitter);
+
+//creating a function for the submitter
+function submitter(event) {
+
+  //prevent the defult behavior of refreshing the page
+  event.preventDefault();
+  //getting the data by user from the form 
+  let branchName = event.target.branchName.value;
+  //console.log(branchName);
+  let min = event.target.min.value;
+
+  let max = event.target.max.value;
+
+  let avg = event.target.avg.value;
+
+  let addBranch = new BranchesData(branchName, min, max, avg);
+
+  //let container = document.getElementById('parent');
+  //container.textContent = '';
+
+
+  BranchesData.prototype.render = function () {
+    let branchesRow = document.createElement('tr');
+    tableElement.appendChild(branchesRow);
+
+    let firstTd = document.createElement('td');
+    branchesRow.appendChild(firstTd);
+    firstTd.textContent = this.branchNam;
+
+    // adding the count of coockies per hour into a row
+    for (let i = 0; i < hours.length; i++) {
+      // make a td element for every hour
+      let BranchesDataTd = document.createElement('td');
+      // append to store row
+      branchesRow.appendChild(BranchesDataTd);
+      // give text content of the avarage cookies per hour
+      BranchesDataTd.textContent = this.cookiesPerHour[i];
+
+    }
+    // creating total td for every branch
+    let totalTd = document.createElement('td');
+    // append total to the branches row
+    branchesRow.appendChild(totalTd);
+    // fill text content
+    totalTd.textContent = this.total;
+
+
+    // footer function
+    function creatingFooter() {
+      // making footer row
+      let footerRow = document.createElement('tr');
+
+      // append footer row to the table
+      tableElement.appendChild(footerRow);
+
+      // creating  first th for footer
+      let firstThr = document.createElement('th');
+
+      // append th to the footer row
+      footerRow.appendChild(firstThr);
+
+      // add to text content
+      firstThr.textContent = 'Total';
+
+
+
+      let hourlyTotal = 0;
+      let grandTotal = 0;
+
+      // creating total calculation
+      for (let i = 0; i < hours.length; i++) {
+        hourlyTotal = 0;
+        for (let j = 0; j < branches.length; j++) {
+          //adding values to totals
+          hourlyTotal += branches[j].cookiesPerHour[i];
+          grandTotal += branches[j].cookiesPerHour[i];
+
+        }
+        console.log(hourlyTotal);
+        // create final th
+        let footerTh = document.createElement('th');
+
+        // append to footer row
+        footerRow.appendChild(footerTh);
+
+        // add text conent
+        footerTh.textContent = hourlyTotal;
+
+      }
+
+      // make final th Grand total
+      let totalTh = document.createElement('th');
+
+      // append to the footer row
+      footerRow.appendChild(totalTh);
+
+      // adding data
+      totalTh.textContent = grandTotal;
+
+      // if you want to solve it with global total
+      // totalTh.textContent=globalTotal;
+
+
+
+    for (let i = 0; i < branches.length; i++) {
+      branches[i].calcCoockieHour();
+      branches[i].render();
+    }
+  };
 }
 
 
@@ -175,10 +294,5 @@ for (let i = 0; i < branches.length; i++) {
   branches[i].calcCoockieHour();
   branches[i].render();
 }
+
 creatingFooter();
-
-
-
-
-
-
