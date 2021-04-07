@@ -110,6 +110,7 @@ BranchesData.prototype.render = function () {
   totalTd.textContent = this.total;
 
 
+
   // footer function
   function creatingFooter() {
     // making footer row
@@ -130,6 +131,7 @@ BranchesData.prototype.render = function () {
 
 
   let hourlyTotal = 0;
+
   let grandTotal = 0;
 
   // creating total calculation
@@ -164,6 +166,7 @@ BranchesData.prototype.render = function () {
 
   // if you want to solve it with global total
   // totalTh.textContent=globalTotal;
+
 
 };
 tableHeader();
@@ -275,8 +278,6 @@ function submitter(event) {
       // if you want to solve it with global total
       // totalTh.textContent=globalTotal;
 
-    }
-    tableHeader();
 
 
     for (let i = 0; i < branches.length; i++) {
@@ -287,9 +288,7 @@ function submitter(event) {
 }
 
 
-
-
-
+tableHeader();
 
 for (let i = 0; i < branches.length; i++) {
   branches[i].calcCoockieHour();

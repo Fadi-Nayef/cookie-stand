@@ -1,4 +1,8 @@
-table td ,th ,tr {
-    border: black solid ;
+
+table tr ,th, td {
+    border: 2px solid salmon;
+
     border-collapse: collapse;
+    
 }
+
