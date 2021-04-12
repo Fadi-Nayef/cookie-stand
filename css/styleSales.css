@@ -1,12 +1,54 @@
-body{
-    background-color: #ffd6ba ;
-    
+body {
+  background-color: #ffd6ba;
 }
-header , h1{
-
-    float: right;
-    text-align: center;
-    position: static;
-background-color: blue;
+header,
+h1 {
+  float: center;
+  text-align: center;
+  position: relative;
+  background-color: rgb(193, 193, 221);
 }
 
+.description p {
+  box-sizing: border-box;
+  min-width: 450px;
+  max-width: 650px;
+  text-align: left;
+  padding: 5px;
+  margin: 0px;
+  max-height: 200px;
+  overflow: scroll;
+  /* float: right;  */
+  /* position: inherit; */
+  margin-right: 1050px;
+  border-style: groove;
+  border-color: #e6d5d5;
+  -moz-box-shadow: inset 0 0 10px #777777;
+  -webkit-box-shadow: inset 0 0 10px #777777;
+  box-shadow: inset 0 0 10px #777777;
+  border-radius: 20px;
+  scroll-behavior: smooth;
+}
+
+button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: color red ease-in-out black;
+  z-index: 1;
+  border-radius: 25%;
+}
+
+#map {
+    border: black solid;
+    box-sizing: border-box;
+    height: 30%;
+    width: 100%;
+    margin-bottom: 50px;
+     position: absolute; 
+    float: none;
+  
+  }
+  
