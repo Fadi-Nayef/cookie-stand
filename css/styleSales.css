@@ -1,0 +1,12 @@
+body{
+    background-color: #ffd6ba ;
+    
+}
+header , h1{
+
+    float: right;
+    text-align: center;
+    position: static;
+background-color: blue;
+}
+
